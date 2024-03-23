@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: rgb(167, 107, 224);
+}
+
+.loader {
+    position: relative;
+    display: flex;
+    width: 120px;
+    height: 20px;
+    margin: 40%;   
+    transition: transform all 0.3s ease;
+  
+    --size: 20px;
+    --color:rgb(14, 14, 14);
+    --largeSize: 30px;
+    --speed:1.5s;
+    --speedDif:0.05s;
+    --padding: 50px;
+
+    width: var(--parentWidth);
+    height: var(--size);
+}
+
+.loader div {
+    position: absolute;
+    top: 10px;
+    width: var(--largeSize);
+    height: var(--largeSize);
+    border-radius: 50%;
+    background-color: var(--color);
+}
+
+.loader::after {
+    content: '';
+    font-size: 1.075em;
+    margin-left: 10px;
+  
+}
+
+.circle1 {
+    left: 0; 
+    animation: var(--speed) ease-in-out 3s infinite jumping1;
+}
+
+.circle2 {
+    left: calc(var(--largeSize) + var(--padding)); 
+    animation: var(--speed) ease-in-out infinite jumping2;
+}
+
+
+.circle3 {
+    left: calc(var(--largeSize) * 2 + var(--padding) * 2);
+    animation: var(--speed) ease-in-out infinite jumping3;
+}
+
+@keyframes jumping1 {
+    0%, 10%, 30%, 100% {
+        width: var(--size);
+        height: var(--size);
+        top: 0;
+        left: 0;
+      }
+      0%, 100%{
+        width: var(--largeSize);
+        height: var(--largeSize);
+        top: -10px;
+        left: -10px;
+      }
+    }
+
+@keyframes jumping2 {
+    0%, 40%, 60%, 100% {
+        width: var(--size);
+        height: var(--size);
+        top: 0;
+        left: calc(var(--largeSize) + var(--padding));
+      }
+      0%, 100% {
+        width: var(--largeSize);
+        height: var(--largeSize);
+        top: -10px;
+        left: calc(var(--largeSize) + var(--padding) - 10px);
+      }
+    }
+
+@keyframes jumping3 {
+    0%, 70%, 90%, 100% {
+        width: var(--size);
+        height: var(--size);
+        top: 0;
+        left: calc(var(--largeSize) * 2 + var(--padding) * 2);
+      }
+      0%, 100% {
+        width: var(--largeSize);
+        height: var(--largeSize);
+        top: -10px;
+        left: calc(var(--largeSize) * 2 + var(--padding) * 2 - 10px);
+      }
+    }
+
